@@ -81,11 +81,12 @@ def getBoxTexCode(x, y, wert, boxlen):
     koord_start = "(" + str(xstart) + "," + str(ystart) + ")"
     koord_end = "(" + str(xend) + "," + str(yend) + ")"
     koord_text = "(" + str(xtext) + "," + str(ytext) + ")"
+    str_wert = str(wert)
     #zunaechst noch start
     
     # DOPPELBACKSLASHES DA PYTHON SYNTAX SONST DEN ERSTEN BUCHSTABEN KAPUTT HAUT, \n fuer Line Endings noch jeweils hinzu zu fuegen.
     ausgabe.append("\\draw [ultra thick] " + koord_start + " rectangle " + koord_end + ";\n") #Box drawen
-    ausgabe.append("\\node at ($" + koord_text + "$) {$" + wert + "$};\n") #Zahl drawen in die Mitte der Box
+    ausgabe.append("\\node at ($" + koord_text + "$) {$" + str_wert + "$};\n") #Zahl drawen in die Mitte der Box
     ausgabe.append("\n")
     return ausgabe
     
