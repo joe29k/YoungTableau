@@ -29,7 +29,21 @@ class youngtableau:
         self.update_word()
 
 
+class word:
+    def __init__(self, wordstring=""):
+        wordlist_str = self.wordstring.split()
+        self.wordlist = []
+        for i in range(0, len(wordlist_str)):
+            self.wordlist.append(int(wordlist_str[i]))
 
+    def K1(self, index):
+        return K1(self.wordlist, index)
+    def K1_inv(self, index):
+        return K1_inv(self.wordlist, index)
+    def K2(self, index):
+        return K2(self.wordlist, index)
+    def K2_inv(self, index):
+        return K2_inv(self.wordlist, index)
 
 def create_from(row,file):
     #Objekt erstellen, die matrix setzen, dadurch oben autom. auch das Word gesetzt.
