@@ -1,0 +1,11 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+
+\begin{document}\begin{figure}
+   \tikzset{
+      tick/.style = {black, very thick}
+    }
+
