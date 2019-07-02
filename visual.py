@@ -96,3 +96,5 @@ def getBoxTexCode(x, y, wert, boxlen):
 if __name__ == "__main__": #Test sheetz aber dat wird nur ausgefuehrt wenn man des programm direkt runnt, yoo
     import words
     print_tex([['1', '2', '2', '3', '3', '5'], ['2', '3', '5', '5'], ['4', '4', '6', '6'], ['5', '6']], 1)
+    print_tex([[1, 2, 2, 3, 3, 5], ['2', '3', '5', '5'], ['4', '4', '6', '6'], ['5', '6']], 1)
+    print_tex([[1, 2, 3]], 1)
