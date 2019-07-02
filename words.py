@@ -62,15 +62,6 @@ def parse(row, file):
     word = woerter[row]
     datei.close() #Datei schliesssen damit fuer andere Programme wieder verwendbaer
     return parse_word(word)
-    
-#if __name__ == "__main__": #Test sheetz aber dat wird nur ausgefuehrt wenn man des programm direkt runnt, yoo
-    #print(parse_word("5 6 4 4 6 6 2 3 5 5 1 2 2 3 3 5"))
-    #Test cases zum hinzufuegen:
-    #A) Value Errors
-    #B) parse from file
-    #print(parse(3, "komasaufen.bier"))
-    #for i in range(0, 4):
-        #print(parse(i, "komasaufen.bier"))
 
 
 def main():

@@ -63,8 +63,3 @@ def get_wyt(wortstring):#Ermittelt das zu word aequivalente Wort, dass ein korre
         yt = row_insert(yt, wortobjekt.wordlist[i])
     return wordFromMatrix(yt)
     
-    
-    
-if __name__ == "__main__": #Test sheetz aber dat wird nur ausgefuehrt wenn man des programm direkt runnt, yoo
-    print(parse_word("5 6 4 4 6 6 2 3 5 5 1 2 2 3 3 5"))
-    multiply(create_from(8, "ttest.txt"), create_from(8, "ttest.txt")).visual(1,"777.tex")
