@@ -56,10 +56,12 @@ def are_equiv(word1, word2):
         return False
 
 def get_wyt(wortstring):#Ermittelt das zu word aequivalente Wort, dass ein korrektes Young Tableau reprasentiert
-    wortobjekt = word(wortstring)
+    wordlist_str = wortstring.split()
     #alle elemente in ein zunaechst leeres young tableaux einfuegen!
     yt = [] #young tableau in listen form
-    for i in range(0,len(wortobjekt.wordlist)):
-        yt = row_insert(yt, wortobjekt.wordlist[i])
+    for i in range(0,len(wordlist_str)):
+        yt = row_insert(yt, int(wordlist_str[i]))
     return wordFromMatrix(yt)
+    
+
     
