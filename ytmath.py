@@ -83,7 +83,7 @@ def K_operation(wordlist, index, typ):
     wordlist[index] = a
     wordlist[index+1] = b
     wordlist[index+2] = c
-    return wordlist
+    return wordFromMatrix([wordlist]) #Umwandlung liste -> WordString
     #Wort zur ausgabe konstruieren
     #finalstring = ""
     #for jj in range(0, len(wordlist)):

@@ -6,6 +6,10 @@ class youngtableau:
     def __init__(self, word):
         self.wordstring = word
         self.matrix = parse_word(word)
+
+    def __str__(self):
+        return self.matrix
+    
     def row_insert(self, x):
         return row_insert(self.matrix, x)
 
@@ -23,6 +27,7 @@ class word:
         self.wordlist = []
         for i in range(0, len(wordlist_str)):
             self.wordlist.append(int(wordlist_str[i]))
+
 
     def K1(self, index):
         return K1(self.wordlist, index)
