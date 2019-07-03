@@ -6,7 +6,7 @@ def parse_word(v):
         @return: list eine Liste wo die Elemente fuer die Zeilen von oben nach unten stehen. Jedes Element(Zeile) hat als
         Unterelemente dabei die Eintraege der jeweiligen Zeile von links nach rechts - ValueError falls das Wort keine YoungTableau repraesentiert!
         """
-    #print(v)
+
     elemnte = v.split() #Fuer jedes Element zur Liste
     elemnz = []
     for r in range (0, len(elemnte)):
@@ -15,24 +15,25 @@ def parse_word(v):
     #Algorithmus: Eine Zeile ist beendet sobald das monotone Wachstum gebrochen wird. Terminierung d Algs. sobald wir
     #nur noch 1 Element haben. Also: So lange zur aktuellen Reihe (am Anfang leer) das erste Element aus der Elementenliste
     #hinzufuegen und entfernen, bis ein kleineres Element ploetzlich kaeme.
-    if v=='':
-        return []
+
     fertigKomplett = False
     reihen = []
     while not fertigKomplett:
         reihe = []
         fertigReihe = False
         while not fertigReihe:
-            if len(elemnz) == 1:
-                reihe.append(elemnz.pop(0))
+            if ((len(elemnz) == 0) or (len(elemnz) == 1)): #0er fall fuer leere Matrix
                 fertigReihe = True
                 fertigKomplett = True
+                if len(elemnz) == 1:
+                    reihe.append(elemnz.pop(0))   
             else:
                 
                 if elemnz[0] > elemnz[1]:#Das Vordere Element beendet die Reihe!!!
                     fertigReihe = True
                 reihe.append(elemnz.pop(0)) #in jedem falle hinzu...
-        reihen.append(reihe)
+        if len(reihe) != 0: #leere Reihen gar nicht erst hinzufuegen - wichtig fuer leeres wort - alles andere aber schon hinzu
+            reihen.append(reihe)
 
     #Liste umdrehen um Zeilen von oben nach unten zu erhalten daraus.
     reihen = list(reversed(reihen))

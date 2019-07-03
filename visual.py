@@ -13,9 +13,17 @@ def print_tex(matrix, boxlenght, filename='visual.tex'):
     #Zeile der Datei.
 
     #Kopf der Datei - aus von uns vorgefertigtem Template - Datei template_head.ctex - ziehen
-    datei= open("template_head.ctex", 'r') #Datei laden aber nur fuer read
-    lines = datei.readlines()
-    datei.close() #Datei schliesssen damit fuer andere Programme wieder verwendbaer
+    lines = []
+    lines.append("\\documentclass{article}\n")
+    lines.append("\n")
+    lines.append("\\usepackage{tikz}\n")
+    lines.append("\\usetikzlibrary{calc}\n")
+    lines.append("\\begin{document}\n")
+    lines.append("\\begin{figure}\n")
+    lines.append("\\tikzset{\n")
+    lines.append("tick/.style = {black, very thick}\n")
+    lines.append("}\n")
+    lines.append("\n")
 
 
     #MITTE DER DATEI - hier fuer jedes Kastchen kommt nen Box dazu
@@ -43,9 +51,13 @@ def print_tex(matrix, boxlenght, filename='visual.tex'):
 
 
     #Ende der Datei - aus von uns vorgefertigtem Template - Datei template_tail.ctex - ziehen
-    datei= open("template_tail.ctex", 'r') #Datei laden aber nur fuer read
-    lines = lines + datei.readlines() #zu unserem rest hinten ran
-    datei.close() #Datei schliesssen damit fuer andere Programme wieder verwendbaer
+    lines.append("\n")
+    lines.append("\n")
+    lines.append("\n")
+    lines.append("\\end{tikzpicture}\n")
+    lines.append("\\end{figure}\n")
+    lines.append("\\end{document}\n")
+    lines.append("\n")
 
 
    
@@ -55,10 +67,7 @@ def print_tex(matrix, boxlenght, filename='visual.tex'):
         file.write(line)
 
     file.close()
-
-    subprocess.call(['pdflatex', filename], stdout=subprocess.DEVNULL)
-
-
+    
 
 def getBoxTexCode(x, y, wert, boxlen):
     """ Hilfsfunktion Gibt zu dem entspr. Uebergebenen Wert und den Koordinaten den Code aus der dann zur Box im latex fuehrt
@@ -89,12 +98,5 @@ def getBoxTexCode(x, y, wert, boxlen):
     ausgabe.append("\\node at ($" + koord_text + "$) {$" + str_wert + "$};\n") #Zahl drawen in die Mitte der Box
     ausgabe.append("\n")
     return ausgabe
-    
 
 
-
-if __name__ == "__main__": #Test sheetz aber dat wird nur ausgefuehrt wenn man des programm direkt runnt, yoo
-    import words
-    print_tex([['1', '2', '2', '3', '3', '5'], ['2', '3', '5', '5'], ['4', '4', '6', '6'], ['5', '6']], 1)
-    print_tex([[1, 2, 2, 3, 3, 5], ['2', '3', '5', '5'], ['4', '4', '6', '6'], ['5', '6']], 1)
-    print_tex([[1, 2, 3]], 1)
