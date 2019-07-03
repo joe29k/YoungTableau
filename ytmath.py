@@ -43,48 +43,55 @@ def K2_inv(wordlist, index):
     return K_operation(wordlist, index, "2_inv")
 
 def K_operation(wordlist, index, typ):
-    if (len(wordlist) < 3) or (index + 3 > len(wordlist)-1):
+    if (len(wordlist) < 3) or (index + 2 > len(wordlist)-1):
         throw_k_ex()
     else:
         a = wordlist[index]
         b = wordlist[index+1]
         c = wordlist[index+2]
         if typ=="1":
-            (a, b, c) = (y, z, x)
+            (y, z, x) = (a, b, c)
             if ((x < y) and (y <= z)):
-                (y, z, x) = (y, x, z)
+                (a, b, c) = (y, x, z)
+            
             else:
                 throw_k_ex()
                 
         elif typ=="1_inv":
-            (a, b, c) = (y, x, z)
+            (y, x, z) = (a, b, c)
             if ((x < y) and (y <= z)):
-                (y, x, z) = (y, z, x)
+                (a, b, c) = (y, z, x)
             else:
                 throw_k_ex()
 
 
         if typ=="2":
-            (a, b, c) = (x, z, y)
+            (x, z, y) = (a, b, c)
             if ((x <= y) and (y < z)):
-                (x, z, y) = (z, x, y)
+                (a, b, c) = (z, x, y)
             else:
                 throw_k_ex()
                 
         elif typ=="2_inv":
-            (a, b, c) = (z, x, y)
+            (z, x, y) = (a, b, c)
             if ((x <= y) and (y < z)):
-                (z, x, y) = (x, z, y)
+                (a, b, c) = (x, z, y)
             else:
                 throw_k_ex()
-    #Wort zur ausgabe konstruieren
-    finalstring = ""
-    for jj in range(0, wordlist):
-        finalstring = finalstring + str(wordlist[jj]) + " "
-    if len(wordlist) != 0:
-            finalstring = finalstring[-1] #letztes zeichen weg
 
-    return finalstring
+
+    wordlist[index] = a
+    wordlist[index+1] = b
+    wordlist[index+2] = c
+    return wordlist
+    #Wort zur ausgabe konstruieren
+    #finalstring = ""
+    #for jj in range(0, len(wordlist)):
+   #     finalstring = finalstring + str(wordlist[jj]) + " "
+  #  if len(wordlist) != 0:
+ #           finalstring = finalstring[-1] #letztes zeichen weg
+#
+    #return finalstring
 
 
 def throw_k_ex(): #hilfsfunktion zur ausgabe fehlermeldung
