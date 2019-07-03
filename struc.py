@@ -4,7 +4,7 @@ from ytmath import *
 
 class youngtableau:
     def __init__(self, word):
-        self.wordstring = word
+        self.wort = word
         self.matrix = parse_word(word)
 
     def __str__(self):
@@ -17,13 +17,13 @@ class youngtableau:
         print_tex(self.matrix, boxlength, file)
             
     def word(self):
-        return word(self.wordstring) #als Objekt!!!
+        return word(self.wort) #als Objekt!!!
 
 
 class word:
     def __init__(self, wordstring=""):
-        self.wordstring = wordstring #benoetigt fuer youngtableau funct.
-        wordlist_str = self.wordstring.split()
+        self.wort = wordstring #benoetigt fuer youngtableau funct.
+        wordlist_str = self.wort.split()
         self.wordlist = []
         for i in range(0, len(wordlist_str)):
             self.wordlist.append(int(wordlist_str[i]))
@@ -40,7 +40,7 @@ class word:
 
     def youngtableau(self):
         #zunaechst noch w quer zu bilden!!!
-        return youngtableau(get_wyt(self.wordstring))
+        return youngtableau(get_wyt(self.wort))
 
 def create_from(row,file):
     #Young Tableau aus File erstellen
@@ -50,7 +50,7 @@ def multiply(S, T):
     return youngtableau(wordFromMatrix(multiplyMatrix(S, T)))
 
 def mult_classes(word1, word2):
-    return word(multiplyWord(word1.wordstring, word2.wordstring))
+    return word(multiplyWord(word1.wort, word2.wort))
 
 def are_equiv(word1, word2):
     w_yt_1 = get_wyt(word1)
