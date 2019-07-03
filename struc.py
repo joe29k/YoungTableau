@@ -11,7 +11,8 @@ class youngtableau:
         return self.matrix
     
     def row_insert(self, x):
-        return row_insert(self.matrix, x)
+        return youngtableau(wordFromMatrix(row_insert(self.matrix, x)))
+        
 
     def visual(self,boxlength, file):
         print_tex(self.matrix, boxlength, file)
@@ -47,18 +48,18 @@ def create_from(row,file):
     return parse(row, file)
 
 def multiply(S, T):
-    return youngtableau(wordFromMatrix(multiplyMatrix(S, T)))
+    return youngtableau(wordFromMatrix(multiplyMatrix(S.matrix, T.matrix)))
 
 def mult_classes(word1, word2):
     return word(multiplyWord(word1.wort, word2.wort))
 
 def are_equiv(word1, word2):
-    w_yt_1 = get_wyt(word1)
-    w_yt_2 = get_wyt(word2)
-    if w_yt_1 == w_yt_2:
+    if word1.youngtableau().wort == word2.youngtableau().wort:
         return True
     else:
         return False
+
+    
 
 def get_wyt(wortstring):#Ermittelt das zu word aequivalente Wort, dass ein korrektes Young Tableau reprasentiert
     wordlist_str = wortstring.split()
@@ -67,6 +68,4 @@ def get_wyt(wortstring):#Ermittelt das zu word aequivalente Wort, dass ein korre
     for i in range(0,len(wordlist_str)):
         yt = row_insert(yt, int(wordlist_str[i]))
     return wordFromMatrix(yt)
-    
-
     
