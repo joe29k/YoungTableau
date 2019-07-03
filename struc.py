@@ -45,7 +45,7 @@ class word:
 
 def create_from(row,file):
     #Young Tableau aus File erstellen
-    return parse(row, file)
+    return youngtableau(wordFromMatrix(parse(row, file)))
 
 def multiply(S, T):
     return youngtableau(wordFromMatrix(multiplyMatrix(S.matrix, T.matrix)))
